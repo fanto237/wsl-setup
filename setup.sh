@@ -15,8 +15,11 @@ RED='\033[0;31m'  # Red Color
 BLUE='\033[0;34m' # Blue Color
 NC='\033[0m'      # No Color
 
-# set up the root as default user for the wsl
-# ubuntu2004.exe config --default-user root
+# copy necessary files
+cp wsl-setup/.zshrc .
+cp wsl-setup/.p10k.zsh .
+cp wsl-setup/.vimrc .
+cp wsl-setup/lsd_0.23.1_amd64.deb .
 
 # *** Install latest ubuntu packages ***
 echo -e "${BLUE}Updating ubuntu packages${NC}"
@@ -69,3 +72,7 @@ sudo apt install $DEPENDENCIES -y
 # setting zsh as the default shell
 echo -e "${BLUE}Setting zsh as the default shell${NC}"
 chsh -s $(which zsh)
+
+# remove the downloaded debian package and the wsl-setup folder
+rm -f lsd_0.23.1_amd64.deb
+rm -rf wsl-setup
